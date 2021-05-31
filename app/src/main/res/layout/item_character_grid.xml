@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.android.rickandmortyproject.database.entity.CharacterDto" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/itemContainer"
+        android:layout_width="160dp"
+        android:layout_height="275dp"
+        app:cardBackgroundColor="@color/cardBackgroundColor"
+        app:cardCornerRadius="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/characterImage"
+                bindImageUrl="@{model.imageUrl}"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/characterName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{model.name}"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textColor="@color/itemTextColor"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/characterImage"
+                tools:text="Baby Legs" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/characterStatus"
+                bindStatusColor="@{model.status}"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/holo_green_dark"
+                app:layout_constraintStart_toStartOf="@id/characterName"
+                app:layout_constraintTop_toBottomOf="@+id/characterName" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/characterAlive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{model.status}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textColor="@color/itemTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/characterStatus"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/characterStatus"
+                app:layout_constraintTop_toTopOf="@+id/characterStatus" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/characterSpeciesTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/species"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textColor="@color/itemTextColor"
+                app:layout_constraintStart_toStartOf="@+id/characterStatus"
+                app:layout_constraintTop_toBottomOf="@+id/characterStatus" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/characterSpecies"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:singleLine="true"
+                android:text="@{model.species}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textColor="@color/itemTextColor"
+                app:layout_constraintBottom_toBottomOf="@+id/characterSpeciesTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/characterSpeciesTitle"
+                app:layout_constraintTop_toBottomOf="@+id/characterAlive" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/favorite"
+                bindFavIcon="@{model.favorite}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/characterSpecies" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

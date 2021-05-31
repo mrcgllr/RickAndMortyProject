@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">RickAndMortyProject</string>
+    <string name="species">Species:</string>
+    <string name="retry">Retry</string>
+    <string name="name">Name:</string>
+    <string name="episodes_count">Episodes Count:</string>
+    <string name="last_location">Last Location:</string>
+    <string name="last_episode_name">Last Episode Name:</string>
+    <string name="last_episode_date">Last Episode Date:</string>
+    <string name="search">Search</string>
+    <string name="unknown">Unknown</string>
+    <string name="dead">Dead</string>
+    <string name="alive">Alive</string>
+    <string name="clear_all">Clear All</string>
+</resources>

@@ -1,0 +1,99 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdkVersion Configs.compileSdk
+    buildToolsVersion Configs.buildToolsVersion
+
+    defaultConfig {
+        applicationId Configs.applicationId
+        minSdkVersion Configs.minSdk
+        targetSdkVersion Configs.targetSdk
+        versionCode Configs.versionCode
+        versionName Configs.versionName
+
+        testInstrumentationRunner Configs.androidTestInstrumentation
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    implementation Dependencies.kotlinStdLib
+    testImplementation Dependencies.junit
+    androidTestImplementation Dependencies.extJUnit
+    androidTestImplementation Dependencies.espressoCore
+
+    implementation Dependencies.coreKtx
+    implementation  Dependencies.appcompat
+    implementation Dependencies.constraintLayout
+    implementation  Dependencies.swipeRefreshLayout
+    implementation  Dependencies.fragmentKtx
+
+    //Retrofit
+    implementation  Dependencies.retrofit
+    implementation  Dependencies.gSonConverter
+    implementation  Dependencies.loggingInterceptor
+
+    //Coroutines
+    implementation  Dependencies.coroutinesCore
+    implementation  Dependencies.coroutinesAndroid
+    implementation  Dependencies.kotlinStdLibJdk
+
+    //Glide
+    implementation  Dependencies.glide
+    kapt  Dependencies.glideCompiler
+
+    //MVVM - LiveData
+    implementation  Dependencies.lifeCycleLiveData
+    implementation  Dependencies.lifeCycleLiveDataCore
+    implementation  Dependencies.lifeCycleViewModel
+    implementation Dependencies.lifeCycleViewModelSavedState
+    implementation  Dependencies.lifeCycleRunTime
+    implementation  Dependencies.lifeCycleCommon
+
+    //NAVIGATION
+    implementation  Dependencies.navigationFragmentKtx
+    implementation  Dependencies.navigationUiKtx
+
+    //MATERIAL DESIGN
+    implementation  Dependencies.materialDesign
+
+    //Hilt
+    implementation  Dependencies.hiltAndroid
+    kapt  Dependencies.hiltAndroidCompiler
+    kapt  Dependencies.hiltCompiler
+    implementation  Dependencies.hiltLifecycleViewModel
+
+
+    //Paging
+    implementation Dependencies.paging
+
+    //Room
+    implementation Dependencies.roomRuntime
+    implementation Dependencies.roomKtx
+    kapt Dependencies.roomKapt
+}

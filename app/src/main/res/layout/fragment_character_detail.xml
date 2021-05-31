@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.android.rickandmortyproject.ui.detail.CharacterDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
+        android:padding="8dp"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/characterImage"
+            bindImageUrl="@{viewModel.characterDetailLD.imageUrl}"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeableImageView.Radius10" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtCharacterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:singleLine="true"
+            android:text="@string/name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterImage" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/characterName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.characterDetailLD.name}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintBottom_toBottomOf="@id/txtCharacterName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtCharacterName"
+            app:layout_constraintTop_toTopOf="@id/txtCharacterName" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/characterStatusImage"
+            bindStatusColor="@{viewModel.characterDetailLD.status}"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/holo_green_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterName" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/characterStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.characterDetailLD.status}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintBottom_toBottomOf="@id/characterStatusImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/characterName"
+            app:layout_constraintTop_toTopOf="@id/characterStatusImage" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtCharacterSpecies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:singleLine="true"
+            android:text="@string/species"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterStatus" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/characterSpecies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.characterDetailLD.species}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintBottom_toBottomOf="@id/txtCharacterSpecies"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/characterName"
+            app:layout_constraintTop_toTopOf="@id/txtCharacterSpecies" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtEpisodesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:singleLine="true"
+            android:text="@string/episodes_count"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtCharacterSpecies" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/characterEpisodesCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{String.valueOf(viewModel.characterDetailLD.episodesCount)}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtEpisodesCount"
+            app:layout_constraintTop_toTopOf="@id/txtEpisodesCount" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgGender"
+            bindGenderIcon="@{viewModel.characterDetailLD.gender}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtEpisodesCount" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/characterGender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.characterDetailLD.gender}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintBottom_toBottomOf="@id/imgGender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/characterName"
+            app:layout_constraintTop_toTopOf="@id/imgGender" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtLastLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:singleLine="true"
+            android:text="@string/last_location"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterGender" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/characterLastLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.characterDetailLD.lastLocation}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintBottom_toBottomOf="@id/txtLastLocation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtLastLocation"
+            app:layout_constraintTop_toTopOf="@id/txtLastLocation" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtLastEpisodeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:singleLine="true"
+            android:text="@string/last_episode_name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterLastLocation" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/characterLastEpisodeName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.episodeDetail.name}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtLastEpisodeName"
+            app:layout_constraintTop_toTopOf="@id/txtLastEpisodeName" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtLastEpisodeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:singleLine="true"
+            android:text="@string/last_episode_date"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterLastEpisodeName" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/characterLastEpisodeAirDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.episodeDetail.air_date}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/detailTextColor"
+            app:layout_constraintBottom_toBottomOf="@id/txtLastEpisodeDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtLastEpisodeDate"
+            app:layout_constraintTop_toTopOf="@id/txtLastEpisodeDate" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
